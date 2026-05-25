@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paper Trader</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Paper Trader</h1>
+    <p>Practice trading with fake money and live market quotes.</p>
+  </header>
+
+  <main>
+    <section class="card" id="profileCard">
+      <h2>Profile</h2>
+      <form id="profileForm">
+        <label>
+          Display name
+          <input id="displayName" required placeholder="Trader Jane" />
+        </label>
+        <label>
+          Starting cash (USD)
+          <input id="startingCash" type="number" min="100" step="100" value="10000" required />
+        </label>
+        <button type="submit">Save / Reset Profile</button>
+      </form>
+      <p class="muted">This will overwrite the current profile and clear past trades.</p>
+    </section>
+
+    <section class="card" id="dashboardCard">
+      <h2>Dashboard</h2>
+      <div class="stats" id="statsGrid"></div>
+    </section>
+
+    <section class="card" id="marketCard">
+      <h2>Market & Trading</h2>
+      <form id="tradeForm" class="trade-form">
+        <label>
+          Symbol
+          <input id="symbol" required placeholder="AAPL" maxlength="8" />
+        </label>
+        <label>
+          Shares
+          <input id="shares" type="number" min="1" step="1" value="1" required />
+        </label>
+        <button type="button" id="refreshQuoteBtn">Refresh Quote</button>
+        <button type="submit" data-action="buy">Buy</button>
+        <button type="submit" data-action="sell">Sell</button>
+      </form>
+      <div id="quotePanel" class="quote-panel">No quote loaded.</div>
+      <p class="muted">Quotes powered by Finnhub demo API (internet required).</p>
+    </section>
+
+    <section class="card">
+      <h2>Portfolio</h2>
+      <div id="portfolioTableWrap"></div>
+    </section>
+
+    <section class="card">
+      <h2>Trade History</h2>
+      <div id="historyTableWrap"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
